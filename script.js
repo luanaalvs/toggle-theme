@@ -1,22 +1,26 @@
 const container = document.getElementsByClassName('container')[0];
-const btn = document.querySelector('button');
-const textButton = document.querySelector('span');
+const btn = document.getElementsByClassName('toggle-button')[0];
+const icon = document.querySelector('img');
 
-// Função para atualizar o texto do botão
-function updateTextButton(text) {
-  textButton.innerHTML = text;
+// Função para atualizar o ícone do botão
+function updateIconButton(path) {
+  icon.setAttribute('src', path);
 }
 
 // Função para mudar o tema
 function toggleTheme() {
-  if (textButton.textContent === 'Claro') {
-    updateTextButton('Escuro');
+  if (icon.classList.contains('moon')) {
+    updateIconButton('./assets/sun-medium.svg');
     container.classList.add('dark');
-    btn.classList.add('btn-dark');
+    btn.classList.add('right');
+    icon.classList.add('sun');
+    icon.classList.remove('moon');
   } else {
-    updateTextButton('Claro');
+    updateIconButton('./assets/moon.svg');
     container.classList.remove('dark');
-    btn.classList.remove('btn-dark');
+    btn.classList.remove('right');
+    icon.classList.add('moon');
+    icon.classList.remove('sun');
   }
 }
 
